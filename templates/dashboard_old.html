@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Мои ответы{% endblock %}
+
+{% block content %}
+<section class="section dashboard fade-in">
+  <div class="container">
+    <h2 class="block-card">Мои ответы</h2>
+
+    {% if answers %}
+      <div class="table-wrapper">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Блок</th>
+              <th>Вопрос</th>
+              <th>Мой ответ</th>
+              <th>Ссылка</th>
+              <th>Действие</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ans, q in answers %}
+            <tr>
+              <td>{{ q.block }}</td>
+              <td>{{ q.text }}</td>
+              <td>{{ ans.text or "—" }}</td>
+              <td>
+                {% if ans.link %}
+                  <a href="{{ ans.link }}" target="_blank" class="link-btn">Открыть</a>
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td>
+                <a href="{{ url_for('edit_answer', answer_id=ans.id) }}" class="btn btn-small">Изменить</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="no-data">Вы ещё не отправили ни одного ответа.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

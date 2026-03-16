@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+<!--      <nav>
+  {% if current_user.is_authenticated %}
+    <a href="{{ url_for('dashboard') }}">Главная</a>
+    <span class="welcome">Привет, {{ current_user.username }}!</span>
+    <a href="{{ url_for('dashboard') }}">Мой кабинет</a>
+    <a href="{{ url_for('logout') }}" class="btn btn-secondary">Выйти</a>
+  {% else %}
+  	<a href="{{ url_for('index') }}">Главная</a>
+    <a href="{{ url_for('login') }}" class="btn btn-primary">Войти</a>
+    <a href="{{ url_for('register') }}" class="btn btn-secondary">Регистрация</a>
+  {% endif %}
+</nav>-->
+
+<nav class="main-nav" {% if request.endpoint == 'index' %}no-stick{% endif %}">
+  <div>
+    <a href="{% if current_user.is_authenticated %}{{ url_for('dashboard') }}{% else %}{{ url_for('index') }}{% endif %}">
+      <!--<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">-->
+    </a>
+   </div>
+  <ul>
+    {% if current_user.is_authenticated %}
+      <li><a href="{{ url_for('index') }}">О чемпионате</a></li>
+      <li><a href="{{ url_for('blocks') }}">Перейти к вопросам</a></li>
+      <li><a href="{{ url_for('dashboard') }}">Мои ответы</a></li>
+      <li><a href="{{ url_for('logout') }}">Выход</a></li>
+      	<div class="user-panel">
+	    👤 {{ current_user.username }}
+	</div>
+    {% else %}
+      <li><a href="{{ url_for('index') }}">Главная</a></li>
+      <li><a href="{{ url_for('register') }}">Регистрация</a></li>
+      <li><a href="{{ url_for('login') }}">Вход</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+
+    </div>
+</header>
+
+<main>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for message in messages %}
+        <div class="flash-message">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2025 Чемпионат по поиску в Интернете</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const flash = document.querySelector(".flash-message");
+    if (flash) {
+        setTimeout(() => {
+            flash.style.opacity = "0";
+            flash.style.transform = "translateY(-10px)";
+            setTimeout(() => flash.remove(), 500);
+        }, 3000); // 3 секунды
+    }
+});
+</script>
+</body>
+</html>

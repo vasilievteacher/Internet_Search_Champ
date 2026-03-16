@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<!-- Герой -->
+<!-- Герой-секция -->
+<section class="hero hero-main">
+  <div class="hero-content">
+    <h1>Чемпионат по поиску в Интернете</h1>
+    <p class="subtitle">Испытай себя, развей навыки поиска и победи!</p>
+
+    {% if current_user.is_authenticated %}
+      <p class="welcome-line">На шаг ближе к ответу 😉</p>
+      <a href="{{ url_for('blocks') }}" class="btn btn-primary">Перейти к заданиям</a>
+    {% else %}
+      <div class="hero-buttons">
+        <a href="{{ url_for('register') }}" class="btn btn-primary">Регистрация</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">Войти</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Таймер -->
+<section class="countdown slide-up">
+  <h2>До старта чемпионата осталось:</h2>
+  <div id="timer" class="timer-display"></div>
+</section>
+
+<!-- Информационные блоки -->
+<section class="info-blocks">
+  <div class="info-card slide-up">
+    <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="О чемпионате">
+    <div class="info-text">
+      <h2>О чемпионате</h2>
+      <p>
+        Чемпионат по поиску в Интернете — это интеллектуальное соревнование для школьников, в котором участникам дают вопросы или задачи, ответы на которые нужно искать, а не знать. Задания требуют умения точно формулировать запрос, анализировать найденную информацию и отличать достоверные источники от ложных.<br>
+        <p>Особенности:</p>
+	<ul class="rules-list">
+		<li>ответы не требуют специальных знаний</li>
+		<li>вся информация есть в открытых источниках</li>
+		<li>важна скорость и точность поиска</li>
+		<li>задания часто требуют нескольких шагов поиска</li>
+	</ul>
+
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card slide-up">
+    <img src="{{ url_for('static', filename='images/history.jpg') }}" alt="История">
+    <div class="info-text">
+      <h2>История</h2>
+      <p>
+        Первый чемпионат прошёл в 2001 году по инициативе компании «Яндекс». Победитель получил звание <strong>«Человек, который нашёл всё»</strong>. С тех пор идея развилась в ежегодное событие, объединяющее тысячи участников со всей страны.Б</p>
+        
+        	<p>Пример задания:<br>
+		Как называется университет, в котором работал изобретатель первой компьютерной мыши?<br>
+
+	<p>Тогда нужно:</p>
+		<ul class="rules-list">
+			<li>найти изобретателя</li>
+			<li>найти где он работал</li>
+		</ul>
+      </p>
+    </div>
+  </div>
+
+  <div class="info-card slide-up">
+    <img src="{{ url_for('static', filename='images/rule.jpg') }}" alt="Правила">
+    <div class="info-text">
+      <h2>Правила и принципы</h2>
+      <ul class="rules-list">
+        <li>Используй только открытые источники информации.</li>
+        <li>Формулируй запросы точно и логично.</li>
+        <li>Проверяй достоверность найденных данных.</li>
+        <li>Делай выводы самостоятельно.</li>
+        <li>Соблюдай академическую честность — без копирования чужих решений.</li>
+      </ul>
+      <a href="/static/files/Rules_and_advises.pdf">Скачать памятку</a>
+    </div>
+  </div>
+</section>
+<script>
+  // Простая реализация таймера до 15 ноября 9:00
+  const targetDate = new Date("March 23, 2026 8:00:00").getTime();
+  const timer = document.getElementById("timer");
+
+  function updateTimer() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      timer.innerHTML = "Чемпионат уже начался!";
+      clearInterval(interval);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    timer.innerHTML = `
+      <div class="time-box"><span>${days}</span><p>дней</p>
+      <span>${hours}</span><p>часов</p>
+      <span>${minutes}</span><p>минут</p>
+      <span>${seconds}</span><p>секунд</p></div>
+    `;
+  }
+
+  const interval = setInterval(updateTimer, 1000);
+  updateTimer();
+</script>
+{% endblock %}

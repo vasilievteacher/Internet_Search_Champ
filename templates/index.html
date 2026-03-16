@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>Чемпионат по поиску в Интернете</h1>
+  <p>Увлекательное соревнование для всех, кто хочет развить свои навыки интернет-исследований!</p>
+  <div class="hero-buttons">
+    <a href="{{ url_for('register') }}" class="btn btn-primary">Регистрация</a>
+    <a href="{{ url_for('login') }}" class="btn btn-secondary">Войти</a>
+  </div>
+</section>
+
+<section class="info">
+  <h2>О чемпионате</h2>
+  <p>
+    Это шанс улучшить навыки поиска информации, развить критическое мышление и узнать новое. 
+    Участникам предстоит решать задания, искать ответы в интернете и проверять себя!
+  </p>
+</section>
+
+<section class="info">
+  <h2>История чемпионатов</h2>
+  <p>
+    Первый чемпионат в России состоялся в 2001 году, организатор — Яндекс. 
+    Его победитель получил титул «Человек, который нашёл всё».
+  </p>
+</section>
+
+<section class="info">
+  <h2>Как искать?</h2>
+  <p>Для победы нужно уметь пользоваться поисковиками:</p>
+  <ul>
+    <li>Формулируйте точные запросы и используйте ключевые слова.</li>
+    <li>Используйте кавычки, минус и оператор site: для уточнения поиска.</li>
+    <li>Ищите не только в Яндексе и Google, но и в Bing, DuckDuckGo, Scholar.</li>
+    <li>Будьте внимательны: ответ всегда точный и однозначный.</li>
+  </ul>
+</section>
+
+<section class="countdown">
+  <h2>До старта чемпионата осталось:</h2>
+  <div id="timer"></div>
+</section>
+
+<script>
+  // Таймер до 30 сентября
+  const endDate = new Date("2025-09-30T00:00:00").getTime();
+  const timer = document.getElementById("timer");
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = endDate - now;
+    if (diff <= 0) {
+      timer.innerHTML = "Сегодня день чемпионата!";
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60))/(1000*60));
+    timer.innerHTML = `${days} дн. ${hours} ч. ${mins} мин.`;
+  }, 1000);
+</script>
+{% endblock %}

@@ -1,0 +1,764 @@
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    background: #f0f4f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;  /* располагать элементы сверху вниз */
+    min-height: 100vh;       /* минимум высоты = высота экрана */
+    margin: 0;
+}
+
+header {
+    background: #1f1f1f;
+    color: #fff;
+    padding: 15px 0;
+}
+
+main {
+    flex: 1;  /* занимает всё доступное пространство между header и footer */
+	margin-top: 80px;
+}
+
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+header .logo {
+    height: 100px;
+}
+header nav a {
+    color: #fff;
+    display: flex;
+    text-decoration: none;
+}
+
+.hero-buttons .btn {
+    margin: 0 10px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+.btn-primary { background: #e67e22; }
+.btn-secondary { background: #2ecc71; }
+
+.hero-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.info-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 10% 100px;
+}
+
+.info-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-card img {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  object-fit: cover;
+}
+
+section.info {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+section.countdown {
+    text-align: center;
+    margin: 40px 0;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+footer {
+    background: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* --- Вопросы и формы --- */
+.block {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #003366;
+  font-weight: 600;
+}
+
+.questions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.question-item {
+  margin-bottom: 25px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  transition: 0.3s;
+  background: #fafafa;
+}
+
+.question-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.question-text {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* --- Форма ответов --- */
+.answer-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.answer-form input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  max-width: 350px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.answer-form input[type="text"]:focus {
+  border-color: #0099ff;
+  box-shadow: 0 0 6px rgba(0, 153, 255, 0.3);
+  outline: none;
+}
+
+.answer-form .btn-primary {
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+.answer-form .btn-primary:hover {
+  background: linear-gradient(135deg, #005fcc, #0088e8);
+  transform: translateY(-2px);
+}
+
+/* --- Универсальные формы --- */
+.form-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #003366;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #0099ff;
+  box-shadow: 0 0 6px rgba(0, 153, 255, 0.3);
+  outline: none;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.form-container button:hover {
+  background: linear-gradient(135deg, #005fcc, #0088e8);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- Раздел с темами чемпионата --- */
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.hero-dark {
+  background: url("/static/images/hero-bg.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px 100px;
+  position: relative;
+}
+
+.hero-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+  border-radius: 0 0 40px 40px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+.hero-main {
+  background: linear-gradient(135deg, rgba(0,0,40,0.8), rgba(0,0,60,0.8)),
+              url("../images/bg-search.jpg") center/cover no-repeat;
+  color: #fff;
+  padding: 160px 10% 120px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.hero-content .subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* --- Сетка карточек --- */
+.blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 50px 10%;
+}
+
+.block-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.block-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.block-header h2 {
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.block-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.btn.btn-primary {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #007bff, #00aaff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-primary:hover {
+  background: linear-gradient(135deg, #005fcc, #0099e6);
+  transform: translateY(-2px);
+}
+
+.no-blocks {
+  text-align: center;
+  color: #555;
+  font-size: 1.1rem;
+  margin-top: 50px;
+}
+
+/* --- Анимации --- */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s ease;
+}
+
+.rules-list {
+  list-style-type: disc;
+  padding-left: 25px;
+  line-height: 1.6;
+}
+
+.slide-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flash-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.flash-message {
+  background: #ff4d4d;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.5s ease;
+}
+
+.user-panel {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.user-panel a {
+  text-decoration: none;
+  color: #ffcc33;
+}
+
+.user-panel a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+/* --- Фиксированная навигация --- */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent; /* изначально прозрачная */
+  color: white;
+  z-index: 1000;
+  display: flex;
+  justify-content:  center;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-nav.scrolled {
+  background: linear-gradient(135deg, #003366, #005599);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 10%;
+}
+
+/* Отключаем "прилипающее" поведение на главной */
+.main-nav.no-stick {
+  position: relative;
+  background: transparent;
+  box-shadow: none;
+  padding: 20px 10%;
+}
+
+.main-nav.no-stick ul a {
+  color: white; /* чтобы красиво смотрелось на фоне hero */
+}
+
+/* --- Элементы меню --- */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-nav li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.main-nav.scrolled {
+  background: linear-gradient(135deg, #003366, #005599);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 30px;
+}
+
+/* Таблица на странице "Мои ответы" */
+.table-wrapper {
+  overflow-x: auto;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+/* Таблица */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+
+.styled-table thead {
+  background: linear-gradient(135deg, #00bfff, #0078d7);
+}
+
+.styled-table th, .styled-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.styled-table th {
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.styled-table tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.styled-table tr:hover {
+  background-color: rgba(0, 191, 255, 0.25);
+  transition: background 0.3s ease;
+}
+
+/* Заголовок секции */
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.7);
+}
+
+/* Кнопки */
+.btn-small {
+  display: inline-block;
+  background: linear-gradient(135deg, #00bfff, #0078d7);
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-small:hover {
+  background: linear-gradient(135deg, #0099cc, #005fa3);
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Ссылки */
+.link-btn {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.link-btn:hover {
+  color: #66e0ff;
+  text-shadow: 0 0 6px rgba(0, 191, 255, 0.6);
+  }
+.saved-answer a {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Пустое состояние */
+.no-data {
+  text-align: center;
+  color: #f0f0f0;
+  font-size: 1.2rem;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  backdrop-filter: blur(6px);
+}
+.info-section {
+  padding: 70px 10%;
+  background: #f9f9f9;
+  color: #222;
+  text-align: center;
+}
+.info-text {
+  flex: 1;
+  padding: 30px 40px;
+}
+
+.info-text h2 {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+.info-section.alt-bg {
+  background: #eef3ff;
+}
+
+.info-section h2 {
+  font-size: 2rem;
+  color: #0033aa;
+  margin-bottom: 15px;
+}
+
+.info-section p {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Таймер */
+.countdown {
+  text-align: center;
+  padding: 70px 10%;
+  background: #0033aa;
+  color: white;
+}
+
+.countdown h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 15px 25px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.time-box span {
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+}
+
+.time-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+/* === Фиксированное меню с прозрачным фоном === */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 40px;
+  transition: background 0.4s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  backdrop-filter: none;
+}
+
+/* При прокрутке — появляется фон и тень */
+.main-nav.scrolled {
+  background: rgba(0, 30, 80, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 14px 40px;
+}
+
+/* Меню */
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li a {
+  color: white;
+  font-weight: 500;
+  font-size: 1.05rem;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-nav li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffcc00;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 5%;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

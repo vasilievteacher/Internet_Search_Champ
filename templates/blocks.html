@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Темы чемпионата{% endblock %}
+
+{% block content %}
+<section class="blocks-grid">
+  {% for block in blocks %}
+    <div class="block-card slide-up">
+      <div class="block-header">
+        <h2>{{ block }}</h2>
+      </div>
+      <p class="block-desc">Нажмите, чтобы перейти к заданиям этого блока.</p>
+      <a href="{{ url_for('show_block', block_name=block) }}" class="btn btn-primary">Перейти</a>
+    </div>
+  {% else %}
+    <p class="no-blocks">Тем пока нет. Администратор скоро добавит их.</p>
+  {% endfor %}
+</section>
+{% endblock %}

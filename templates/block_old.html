@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Блок: {{ block }}{% endblock %}
+
+{% block content %}
+<section class="block">
+
+    <!-- Кнопка возврата -->
+    <a href="{{ url_for('blocks') }}" class="btn btn-secondary">
+        ← К выбору тем
+    </a>
+
+    <h2 class="block-header">Блок: {{ block }}</h2>
+
+    <ul class="questions-list">
+        {% for q in questions %}
+        <li class="question-item">
+            <p class="question-text">{{ q.text }}</p>
+
+            {% if q.id in user_answers %}
+                
+                <!-- Если ответ уже есть -->
+                <div class="saved-answer">
+                    <p><strong>Ваш ответ:</strong> {{ user_answers[q.id].text }}</p>
+
+                    {% if user_answers[q.id].link %}
+                        <p>
+                            <strong>Ссылка:</strong>
+                            <a href="{{ user_answers[q.id].link }}" target="_blank">
+                                {{ user_answers[q.id].link }}
+                            </a>
+                        </p>
+                    {% endif %}
+
+                    <a href="{{ url_for('dashboard') }}"
+                       class="btn btn-warning">
+                        ✏ Изменить ответ
+                    </a>
+                </div>
+
+            {% else %}
+
+                <!-- Если ответа нет -->
+                <form method="post"
+                      action="{{ url_for('submit_answer',
+                                         qid=q.id,
+                                         block_name=block) }}"
+                      class="answer-form">
+
+                    <input type="text"
+                           name="answer"
+                           placeholder="Введите ответ..."
+                           required>
+
+                    <input type="url"
+                           name="link"
+                           placeholder="Ссылка на источник">
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        💾 Сохранить
+                    </button>
+                </form>
+
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

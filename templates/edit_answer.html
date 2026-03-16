@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Редактировать ответ{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <h2>Редактирование ответа</h2>
+  <form method="post">
+    <div class="form-group">
+      <label>Ответ</label>
+      <input type="text" name="text" value="{{ answer.text }}" required>
+    </div>
+    <div class="form-group">
+      <label>Ссылка на источник: </label>
+      <input type="url" name="link" value="{{ answer.link }}">
+    </div>
+    <button type="submit">💾 Сохранить изменения</button>
+  </form>
+  <br>
+ <div align="right">
+ <a href="{{ url_for('dashboard') }}" >Отмена</a>
+ <div>
+</div>
+{% endblock %}

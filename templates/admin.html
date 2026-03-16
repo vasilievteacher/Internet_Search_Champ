@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Админка</title>
+</head>
+<body>
+  <h2>Сводная таблица ответов</h2>
+  <table border="1">
+    <tr>
+      <th>Пользователь</th>
+      <th>Вопрос</th>
+      <th>Ответ</th>
+      <th>Ссылка</th>
+      <th>Правильный ответ</th>
+    </tr>
+    {% for a in answers %}
+      <tr>
+        <td>{{ a.user.username }}</td>
+        <td>{{ a.question.text }}</td>
+        <td>{{ a.text }}</td>
+        <td><a href="{{ a.link }}" target="_blank">{{ a.link }}</a></td>
+        <td>{{ a.question.correct_answer }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
