@@ -7,8 +7,9 @@ from collections import defaultdict
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'super-secret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz.db'
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "dev-secret")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL") or "sqlite:///quiz.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -17,7 +18,7 @@ login_manager.login_view = 'login'
 
 
 START_TIME = datetime(2026, 3, 23, 8, 0, 0)      # ВРЕМЯ СТАРТА
-END_TIME   = datetime(2026, 3, 23, 13, 59, 0)    # ВРЕМЯ ОКОНЧАНИЯ
+END_TIME   = datetime(2026, 3, 26, 24, 59, 0)    # ВРЕМЯ ОКОНЧАНИЯ
 REMINDER_TIME = datetime(2026, 3, 23, 8, 0, 0)   # 14 ноября, 17:00
 START_TEXT = ' 23 марта, 08:00'
 
