@@ -78,8 +78,18 @@ document.addEventListener("DOMContentLoaded", function () {
             flash.style.opacity = "0";
             flash.style.transform = "translateY(-10px)";
             setTimeout(() => flash.remove(), 500);
-        }, 3000); // 3 секунды
+        }, 3000);
     }
+
+    const nav = document.querySelector(".main-nav");
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
+        }
+    });
 });
 </script>
 </body>
