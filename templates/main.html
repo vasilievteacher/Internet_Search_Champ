@@ -102,11 +102,12 @@
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     timer.innerHTML = `
-      <div class="time-box"><span>${days}</span>дня 
-      <span>${hours}</span>часов
-      <span>${minutes}</span><p>минут
-      <span>${seconds}</span><p>секунд</div>
-    `;
+	<div class="time-box">
+	<span>${days}</span>д
+  	<span>${hours}</span>ч
+  	<span>${minutes}</span>м
+  	<span>${seconds}</span>с
+	</div>`;
   }
 
   const interval = setInterval(updateTimer, 1000);
