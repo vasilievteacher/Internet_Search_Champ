@@ -26,7 +26,7 @@ login_manager.login_view = 'login'
 
 
 
-START_TIME = datetime(2026, 3, 20, 8, 0, 0)      # ВРЕМЯ СТАРТА
+START_TIME = datetime(2026, 3, 23, 8, 0, 0)      # ВРЕМЯ СТАРТА
 END_TIME   = datetime(2026, 3, 26, 23, 59, 0)    # ВРЕМЯ ОКОНЧАНИЯ
 REMINDER_TIME = datetime(2026, 3, 23, 8, 0, 0)   # 14 ноября, 17:00
 START_TEXT = ' 23 марта, 08:00'
