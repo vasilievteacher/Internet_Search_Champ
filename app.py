@@ -136,7 +136,7 @@ def edit_answer(answer_id):
         return redirect(url_for('dashboard'))
 
     if request.method == 'POST':
-        answer.text = request.form['text']
+        answer.text = request.form['text'][:500]
         answer.link = request.form['link']
         db.session.commit()
         flash("Ответ обновлён.")
@@ -191,7 +191,7 @@ def show_block(block_name):
 @app.route('/answer/<int:qid>/<block_name>', methods=['POST'])
 @login_required
 def submit_answer(qid, block_name):
-    answer_text = request.form['answer']
+    answer_text = request.form['answer'][:500]
     answer_link = request.form['link']
     existing = Answer.query.filter_by(user_id=current_user.id, question_id=qid).first()
     if existing:
