@@ -55,7 +55,7 @@ class Answer(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
     text = db.Column(db.String(500))
-    link = db.Column(db.String(500))
+    link = db.Column(db.Text)
 
     user = db.relationship('User', backref='answers')
     question = db.relationship('Question', backref='answers')
